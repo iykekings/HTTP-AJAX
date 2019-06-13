@@ -8,34 +8,18 @@ import Header from './components/Header';
 
 function App() {
   const [friends, setFriends] = useState([]);
-  const [friendForm, setFriendForm] = useState({name: '', age: '', email: ''});
   const baseUrl = 'http://localhost:5000/friends';
 
-  const friendInputChange = target => {
-    let newForm = friendForm;
-    newForm[target.id] = target.value;
-    setFriendForm({...newForm });
-  }
-
-  const CreateFriend = async () => {
-    const { name, email, age } = friendForm;
+  const CreateFriend = async newUser => {
+    const { name, email, age } = newUser;
     const body = {name, age: parseInt(age), email}
     const req = await Axios.post(baseUrl, body)
     setFriends(req.data)
-    setFriendForm({name: '', age: '', email: ''});
-  }
-  const updateFriend = async id => {
-    const { name, email, age } = friendForm;
-    const body = {name, age: parseInt(age), email}
-    const req = await Axios.put(`${baseUrl}/${id}`, body)
-    setFriends(req.data)
-    setFriendForm({name: '', age: '', email: ''});
   }
 
-  const editFriend = id => {
-    const edFriend = friends.filter(friend => friend.id === id)
-    const { name, age, email } = edFriend[0];
-    setFriendForm({name, age, email})
+  const updateFriend = async (id, body) => {
+    const req = await Axios.put(`${baseUrl}/${id}`, body)
+    setFriends(req.data)
   }
 
   const deleteFriend = async id => {
@@ -60,21 +44,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Route path="/" render={rProps => <FriendList {...rProps}
+      <Route exact path="/" render={rProps => <FriendList {...rProps}
         friends={friends}
         deleteFriend={deleteFriend}
-        editFriend={editFriend}
        />} />
       <Route path="/add-friend" render={rProps => <FriendForm {...rProps}
-        friendInputChange={friendInputChange}
         createFriend={CreateFriend}
-        friendForm={friendForm}
        />} />
       <Route path="/update-friend/:id" render={rProps => <FriendForm {...rProps}
-        friendInputChange={friendInputChange}
-        friendForm={friendForm}
         updateFriend={updateFriend}
-        updateState={true}
        />} 
        />
     </div>

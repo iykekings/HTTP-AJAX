@@ -8,7 +8,6 @@ const FriendList = ({ friends, deleteFriend, editFriend }) => {
             key={friend.id} 
             {...friend} 
             deleteFriend={deleteFriend}
-            editFriend={editFriend}
             />)}
         </div>
     )
