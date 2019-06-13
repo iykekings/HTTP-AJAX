@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Friend = props => {
     return (
@@ -9,9 +9,9 @@ const Friend = props => {
             <p className="f-email">{props.email}</p>
             <div className="f-btns">
                 <button onClick={(e) => props.deleteFriend(props.id) }>Delete</button>
-                <NavLink to={`/update-friend/${props.id}`} >
+                <Link to={`/update-friend/${props.id}`} >
                     <button>Edit</button>
-                </NavLink>
+                </Link>
             </div>
         </div>
     )
