@@ -1,6 +1,7 @@
 import React from 'react'
 
 const FriendForm = props => {
+    console.log(props);
     const submitForm = (e) => {
         e.preventDefault();
         if(props.updateState) {

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Friend = props => {
     return (
@@ -8,7 +9,8 @@ const Friend = props => {
             <p>{props.age}</p>
             <p>{props.email}</p>
             <button onClick={(e) => props.deleteFriend(props.id) }>Delete</button>
-            <button onClick={() => props.editFriend(props.id) }>Edit</button>
+            <NavLink to={`/update-friend/{props.match.params.id}`} />
+            {/* <button onClick={() => props.editFriend(props.id) }>Edit</button> */}
         </div>
     )
 }
