@@ -12,9 +12,65 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.friend-con {
+  padding: 5rem;
+}
 .friend {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  border: 2px coral solid;
+  margin-bottom: 2rem;
+  background-color: gainsboro;
+  padding-bottom: 1rem;
+}
+.f-email {
+  flex: 1 1 100%;
+}
+.f-age {
+  margin-left: 1rem;
+}
+
+.f-btns > a {
+  text-decoration: none;
+  padding: unset;
+  margin-right: unset;
+  color: inherit;
+}
+
+.f-btns * {
+  margin-right: 1rem;
+  padding: 0.6rem 2rem;
+}
+
+.header {
+  padding: 1rem;
+  background-color: coral;
+}
+.header > a {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: cornflowerblue;
+  background-color: #fdd8ac;
+  font-weight: 500;
+}
+
+.form-bearer {
+  padding: 5rem 5vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: coral;
 }
